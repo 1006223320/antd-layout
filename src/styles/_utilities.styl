@@ -1,0 +1,709 @@
+// 全局效用，原子化样式
+// 略缩说明：f: font ; p: padding; m: margin; b: border; br: border-radius; t: text; tblr: top/bottom/left/right
+
+//-------- Position 位置 -------- //
+.container
+  margin-left: auto
+  margin-right: auto
+  padding-left: $layout-spacing*1.5
+  padding-right: $layout-spacing*1.5
+  width: 100%
+.relative
+  position: relative
+.absolute
+  position: absolute
+.fixed
+  position: fixed
+.centered
+  display: block
+  float: none
+  margin-left: auto
+  margin-right: auto
+.flex-centered
+  align-items: center
+  display: flex
+  justify-content: center
+// 边距
+.t0
+  top 0
+.r0
+  right 0
+.b0
+  bottom 0
+.l0
+  left 0
+// display
+.block
+  display block
+.inline
+  display inline
+.inline-block
+  display inline-block
+.vhidden
+  display nonvh
+.visible
+  visibility: visible
+.invisible
+  visibility: hidden
+// 层叠
+.z0
+  z-index 0
+.z1
+  z-index 100
+.z2
+  z-index 200
+.z3
+  z-index 300
+.z4
+  z-index 400
+
+
+//-------- Flex 弹性布局(坚决反对使用float与clearFloat) -------- //
+.flex
+  display flex
+  // 加上下面兼容会更好吧?
+  display -webkit-flex
+  display -webkit-box
+  display -moz-box
+  display -ms-flexbox
+
+// 提倡后续都用这个，将自身属性与主要为子容器的属性分开
+.__flex
+  display flex
+  display -webkit-flex
+  display -webkit-box
+  display -moz-box
+  display -ms-flexbox
+
+.flex1
+  flex 1
+  // postcss会自动加，但下面三个不会，手动加上，避免兼容问题(iOS8下出现过)
+  // @see: https://www.jianshu.com/p/3ce33aa2fb96
+  -webkit-flex 1
+  -ms-flex 1
+  -webkit-box-flex 1
+  -moz-box-flex 1
+
+.wrap
+  flex-wrap wrap
+.row /*排成一行，默认*/
+  flex-direction row
+.row-reverse
+  flex-direction row-reverse
+.col /*排成一列*/
+  flex-direction column
+.j-start
+  justify-content flex-start
+.j-end
+  justify-content flex-end
+.j-center
+  justify-content center
+.j-between
+  justify-content space-between
+.j-around
+  justify-content space-around
+.a-start
+  align-items flex-start
+.a-end
+  align-items flex-end
+.a-center
+  align-items center
+.a-baseline
+  align-items baseline
+.a-stretch //flex默认值
+  align-items stretch
+.s-center
+  align-self center
+.xy-center
+  flex-direction row
+  justify-content center
+  align-items center
+
+
+//-------- Margin,Padding 间距 用法：[m/p]+[t/b/l/r/x/y]+[1/2/3/4]，如ml2, py3-------- //
+// Margin
+/*mixin*/margin-variant($id = 1, $size = $unit-1)
+  .m{$id}
+    margin: $size !important
+  .mb{$id}
+    margin-bottom: $size !important
+  .ml{$id}
+    margin-left: $size !important
+  .mr{$id}
+    margin-right: $size !important
+  .mt{$id}
+    margin-top: $size !important
+  .mx{$id}
+    margin-left: $size !important
+    margin-right: $size !important
+  .my{$id}
+    margin-bottom: $size !important
+    margin-top: $size !important
+margin-variant(0, 0)
+margin-variant(1, $unit-1)
+margin-variant(2, $unit-2)
+margin-variant(3, $unit-3)
+margin-variant(4, $unit-4)
+margin-variant(5, $unit-5)
+margin-variant(6, $unit-6)
+margin-variant(7, $unit-7)
+margin-variant(8, $unit-8)
+.mx-auto
+  margin-left: auto
+  margin-right: auto
+// Padding
+/*mixin*/padding-variant($id = 1, $size = $unit-1)
+  .p{$id}
+    padding: $size !important
+  .pb{$id}
+    padding-bottom: $size !important
+  .pl{$id}
+    padding-left: $size !important
+  .pr{$id}
+    padding-right: $size !important
+  .pt{$id}
+    padding-top: $size !important
+  .px{$id}
+    padding-left: $size !important
+    padding-right: $size !important
+  .py{$id}
+    padding-bottom: $size !important
+    padding-top: $size !important
+padding-variant(0, 0)
+padding-variant(1, $unit-1)
+padding-variant(2, $unit-2)
+padding-variant(3, $unit-3)
+padding-variant(4, $unit-4)
+padding-variant(5, $unit-5)
+padding-variant(6, $unit-6)
+padding-variant(7, $unit-7)
+padding-variant(8, $unit-8)
+
+
+//-------- Width 宽度 / 12格栅格系统 -------- //
+// 相对父容器
+.w0
+  width 0
+.w1
+  width 8.33333%
+.w2
+  width 16.66667%
+.w3
+  width 25%
+.w4
+  width 33.33333%
+.w5
+  width 41.66667%
+.w6
+  width 50%
+.w7
+  width 58.33333%
+.w8
+  width 66.66667%
+.w9
+  width 75%
+.w10
+  width 83.33333%
+.w11
+  width 91.66667%
+.w12
+  width 100%
+.wa
+  width auto
+// left offset
+.l1
+  margin-left 8.33333%
+.l2
+  margin-left 16.66667%
+.l3
+  margin-left 25%
+.l4
+  margin-left 33.33333%
+.l5
+  margin-left 41.66667%
+.l6
+  margin-left 50%
+.l7
+  margin-left 58.33333%
+.l8
+  margin-left 66.66667%
+.l9
+  margin-left 75%
+.l10
+  margin-left 83.33333%
+.l11
+  margin-left 91.66667%
+.l12
+  margin-left 100%
+// right offset
+.r1
+  margin-right 8.33333%
+.r2
+  margin-right 16.66667%
+.r3
+  margin-right 25%
+.r4
+  margin-right 33.33333%
+.r5
+  margin-right 41.66667%
+.r6
+  margin-right 50%
+.r7
+  margin-right 58.33333%
+.r8
+  margin-right 66.66667%
+.r9
+  margin-right 75%
+.r10
+  margin-right 83.33333%
+.r11
+  margin-right 91.66667%
+.r12
+  margin-right 100%
+.fit //强制fit可使用w12
+  max-width 100%
+  height auto
+// Width 相对于屏幕
+.vw1
+  width 8.33333vw
+.vw2
+  width 16.66667vw
+.vw3
+  width 25vw
+.vw4
+  width 33.33333vw
+.vw5
+  width 41.66667vw
+.vw6
+  width 50vw
+.vw7
+  width 58.33333vw
+.vw8
+  width 66.66667vw
+.vw9
+  width 75vw
+.vw10
+  width 83.33333vw
+.vw11
+  width 91.66667vw
+.vw12
+  width 100vw
+
+
+//-------- Height 高度 -------- //
+// 相对于父容器
+.h10
+  height 10%
+.h20
+  height 20%
+.h25
+  height 25%
+.h30
+  height 30%
+.h40
+  height 40%
+.h50
+  height 50%
+.h60
+  height 60%
+.h70
+  height 70%
+.h75
+  height 75%
+.h80
+  height 80%
+.h90
+  height 90%
+.h100
+  height 100%
+.minh100
+  min-height 100%
+ // 相对于屏幕
+.vh4
+  height 4vh
+.vh6
+  height 6vh
+.vh8
+  height 8vh
+.vh10
+  height 10vh
+.vh12
+  height 12vh
+.vh15
+  height 15vh
+.vh20
+  height 20vh
+.vh22
+  height 22vh
+.vh23
+  height 23vh
+.vh24
+  height 24vh
+.vh25
+  height 25vh
+.vh30
+  height 30vh
+.vh40
+  height 40vh
+.vh50
+  height 50vh
+.vh60
+  height 60vh
+.vh70
+  height 70vh
+.vh75
+  height 75vh
+.vh80
+  height 80vh
+.vh90
+  height 90vh
+.vh100
+  height 100vh
+.minvh100
+  min-height 100vh
+
+
+//-------- Font 文字大小/靠齐/行高/排版/风格... -------- //
+// 大小
+.f1
+  font-size $font-size-xl
+.f2
+  font-size $font-size-lg
+.f3
+  font-size $font-size
+.f4
+  font-size $font-size-sm
+.f5
+  font-size $font-size-xs
+
+.small-font{
+    font-size: $font-size-xs
+    -webkit-transform-origin-x: 50%
+    -webkit-transform: scale(0.90)
+}
+.tl-small-font{
+    font-size: $font-size-xs
+    -webkit-transform-origin-x: -5%
+    -webkit-transform: scale(0.90)
+}
+.min-font{
+    font-size: $font-size-xs
+    -webkit-transform-origin-x: 50%
+    -webkit-transform: scale(0.80)
+}
+// 靠齐
+.tl
+  text-align left
+.tc
+  text-align center
+.tr
+  text-align right
+.tj
+  text-align justify
+.middle
+  vertical-align middle
+
+// 行高
+.lh1
+  line-height 1
+.lh12
+  line-height 1.2
+.lh15
+  line-height 1.5
+.lh2
+  line-height 2
+.lh25
+  line-height 2.5
+.lh3
+  line-height 3
+// 排版
+.lowercase
+  text-transform: lowercase
+.uppercase
+  text-transform: uppercase
+.capitalize
+  text-transform: capitalize
+.omit
+  text-overflow ellipsis
+  overflow hidden
+  white-space nowrap
+.omit2
+	overflow  hidden
+	text-overflow ellipsis
+	display -webkit-box
+	-webkit-box-orient vertical
+	-webkit-line-clamp 2
+// 风格
+.unbold
+  font-weight: normal
+.bold
+  font-weight: bold
+.italic
+  font-style: italic
+.ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+.clip
+  overflow: hidden
+  text-overflow: clip
+  white-space: nowrap
+.break
+  hyphens: auto
+  word-break: break-word
+  word-wrap: break-word
+
+
+//-------- Color 颜色 -------- //
+// text-color
+/*mixin*/text-color-variant($name, $color)
+  {$name}
+    color: $color !important
+  a{$name}
+    &:focus, &:hover
+      color: darken($color, 5%)
+    &:visited
+      color: lighten($color, 5%)
+text-color-variant(".primary", $primary-color)
+text-color-variant(".second", $secondary-color-dark)
+text-color-variant(".gray", $gray-color)
+text-color-variant(".light", $light-color)
+text-color-variant(".dark", $body-font-color)
+text-color-variant(".success", $success-color)
+text-color-variant(".warning", $warning-color)
+text-color-variant(".error", $error-color)
+// bg-color
+/*mixin*/bg-color-variant($name, $color)
+  {$name}
+    background: $color !important
+    if lightness($color) < 60
+      color: $light-color
+bg-color-variant(".bg-primary", $primary-color)
+bg-color-variant(".bg-second", $secondary-color)
+bg-color-variant(".bg-dark", $dark-color)
+bg-color-variant(".bg-gray", $bg-color)
+bg-color-variant(".bg-light", lighten($bg-color, 30%))
+bg-color-variant(".bg-lighter", lighten($bg-color, 70%))
+bg-color-variant(".bg-success", $success-color)
+bg-color-variant(".bg-warning", $warning-color)
+bg-color-variant(".bg-error", $error-color)
+bg-color-variant(".bg-white", #ffffff)
+.stroke-primary
+  stroke $primary-color
+.stroke-second
+  stroke $secondary-color
+.bg
+  background $primary-color !important
+// other color
+.black
+  color #000
+.white
+  color #fff
+.blue
+  color #0074D9
+.green
+  color #2ECC40
+.yellow
+  color #FFDC00
+.orange
+  color #ff851b
+.red
+  color #FF4136
+.purple
+  color #b10dc9
+.gray
+  color #aaa
+
+//-------- Border 边框 -------- //
+.b
+  border 1px solid $border-color
+.bt
+  border-top 1px solid $border-color
+.bb
+  border-bottom 1px solid $border-color
+.bl
+  border-left 1px solid $border-color
+.br
+  border-right 1px solid $border-color
+.b-light
+  border-color $border-color-light!important
+.b-lighter
+  border-color lighten($border-color-light, 80%)
+.b-dark
+  border-color $border-color-dark
+.b-primary
+  border-color $primary-color
+.bw1
+  border-width 1px
+.bw2
+  border-width 2px
+.bw3
+  border-width 3px
+.bw4
+  border-width 4px
+.b-dashed //仅底部
+  border-style none none dashed none
+.bn
+  border none
+
+
+//-------- 修饰: 圆角\投影\渐变等 -------- //
+// 圆角
+.round
+  border-radius: $border-radius
+.rounder
+  border-radius: $border-radius*2
+.circle
+  border-radius: 50%
+.near-circle
+  border-radius: 40%
+.br50
+  height 50px
+  border-radius @height/2
+.br1 /*等同于round*/
+  border-radius: $border-radius
+.br2 /*等同于rounder*/
+  border-radius: $border-radius*2
+.br2 /*等同于rounder*/
+  border-radius: $border-radius*2
+.br3 /*等同于rounder*/
+  border-radius: $border-radius*3
+.br4 /*等同于rounder*/
+  border-radius: $border-radius*4
+.br5 /*等同于rounder*/
+  border-radius: $border-radius*5
+.br6 /*等同于rounder*/
+  border-radius: $border-radius*6
+.br7 /*等同于rounder*/
+  border-radius: $border-radius*7
+.br8 /*等同于rounder*/
+  border-radius: $border-radius*8
+.brt1 /*顶部圆角*/
+  border-top-left-radius $border-radius
+  border-top-right-radius $border-radius
+.brb1 /*左部圆角*/
+  border-bottom-left-radius $border-radius
+  border-bottom-right-radius $border-radius
+.brl1 /*右部圆角*/
+  border-top-left-radius $border-radius
+  border-bottom-left-radius $border-radius
+.brr1 /*下部圆角*/
+  border-top-right-radius $border-radius
+  border-bottom-right-radius $border-radius
+.brt2
+  border-top-left-radius $border-radius*2
+  border-top-right-radius $border-radius*2
+.brb2
+  border-bottom-left-radius $border-radius*2
+  border-bottom-right-radius $border-radius*2
+.brl2
+  border-top-left-radius $border-radius*2
+  border-bottom-left-radius $border-radius*2
+.brr2
+  border-top-right-radius $border-radius*2
+  border-bottom-right-radius $border-radius*2
+// 投影
+.shadow
+  box-shadow 0.1rem 0.1rem 0.5rem rgba($dark-color, 0.1)
+// 渐变
+.bg-grad-left
+  background: -webkit-linear-gradient(left, lighten($primary-color, 30%), $primary-color)
+.bg-grad-right
+  background: -webkit-linear-gradient(right, lighten($primary-color, 30%), $primary-color)
+.bg-grad-top
+  background: -webkit-linear-gradient(top, lighten($primary-color, 30%), $primary-color)
+.bg-grad-bottom
+  background: -webkit-linear-gradient(bottom, lighten($primary-color, 30%), $primary-color)
+
+//-------- 杂项 -------- //
+// 鼠标形状
+.pointer
+  cursor: pointer
+.not-allowed
+  cursor: not-allowed
+// 滚动条
+.overflow-y
+  overflow-y auto
+.overflow-x
+  overflow-x auto
+.overflow-hidden
+  overflow hidden
+.scroll-x
+  overflow-x auto
+  display -webkit-box
+  Webkit-overflow-scrolling touch
+.scroll-y
+  overflow-y auto
+  display -webkit-box
+  Webkit-overflow-scrolling touch
+
+.border-box
+  box-sizing border-box
+.one-line
+  display -webkit-box
+  -webkit-box-orient vertical
+  -webkit-line-clamp 1
+  overflow hidden
+.two-line
+  display -webkit-box
+  -webkit-box-orient vertical
+  -webkit-line-clamp 2
+  overflow hidden
+.three-line
+  display -webkit-box
+  -webkit-box-orient vertical
+  -webkit-line-clamp 3
+  overflow hidden
+// 背景图片
+.bg-cover //居中并按父元素位置缩放，裁切以填满父元素，等于'no-repeat center/cover url(imageUrl)'
+  background-repeat no-repeat
+  background-position center
+  background-size cover
+.bg-contain //居中并按父亲元素位置缩放，但保持自身比例，会有空白，等于'no-repeat center/contain url(imageUrl)'
+  background-repeat no-repeat
+  background-position center
+  background-size contain
+
+
+//-------- 其他常用Widgets -------- //
+//Loading动画图标
+.loading
+  color: transparent !important
+  min-height: $unit-4
+  pointer-events: none
+  position: relative
+  &::after
+    animation: loading 500ms infinite linear
+    border: $border-width-lg solid $primary-color
+    border-radius: 50%
+    border-right-color: transparent
+    border-top-color: transparent
+    content: ""
+    display: block
+    height: $unit-4
+    left: 50%
+    margin-left: -1*$unit-2
+    margin-top: -1*$unit-2
+    position: absolute
+    top: 50%
+    width: $unit-4
+    z-index: $zindex-0
+  &.loading-lg
+    min-height: $unit-10
+    &::after
+      height: $unit-8
+      margin-left: -1*$unit-4
+      margin-top: -1*$unit-4
+      width: $unit-8
+
+.btn-like //像按钮
+  background $primary-color
+  color white
+  &:focus, &:hover
+    background darken(@background, 2%)
+    border-color darken(@background, 5%)
+    color: @color
+  &:active, &.active
+    background darken(@background, 7%)
+    border-color darken(@background, 10%)
+    color @color

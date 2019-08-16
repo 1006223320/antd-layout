@@ -1,0 +1,136 @@
+// Core colors
+//**************************************
+// $primary-color = #ff6868 //course
+// $primary-color = #5755d9 //default
+// $primary-color = #ffa052 //ddys
+// $primary-color = #ff851b //orange
+$primary-color = #1890ff //antd
+//**************************************
+$primary-color-dark = darken($primary-color, 3%)
+$primary-color-light = lighten($primary-color, 3%)
+$secondary-color = lighten($primary-color, 37.5%)
+$secondary-color-dark = darken($secondary-color, 3%)
+$secondary-color-light = lighten($secondary-color, 3%)
+
+
+// Gray colors
+//**************************************
+$base-dark-color = #303742 //default
+$dark-color = lighten($base-dark-color, 20%) //default
+// $dark-color = #343434 //更清淡
+//**************************************
+$light-color = #fff
+$gray-color = lighten($dark-color, 55%)
+$gray-color-dark = darken($gray-color, 30%)
+$gray-color-light = lighten($gray-color, 20%)
+$bg-color = lighten($dark-color, 75%)
+$bg-color-dark = darken($bg-color, 3%)
+$bg-color-light = $light-color
+
+
+// border-color
+//**************************************
+$border-color = lighten($dark-color, 65%) //default
+// $border-color = lighten($dark-color, 80%) //更清淡些
+//**************************************
+$border-color-dark = darken($border-color, 10%)
+$border-color-light = lighten($border-color, 8%)
+
+// Control colors
+$success-color = #32b643
+$warning-color = #ffb700
+$error-color = #e85600
+
+
+// Other colors
+$code-color = #d73e48
+$highlight-color = #ffe9b3
+$body-bg = $bg-color-light
+$body-font-color = lighten($dark-color, 5%)
+$link-color = $primary-color
+$link-color-dark = darken($link-color, 10%)
+$link-color-light = lighten($link-color, 10%)
+
+
+// Fonts
+// Credit: https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
+$base-font-family = -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto
+$mono-font-family = "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace
+$fallback-font-family = "Helvetica Neue", sans-serif
+$cjk-zh-hans-font-family = $base-font-family, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", $fallback-font-family
+$cjk-zh-hant-font-family = $base-font-family, "PingFang TC", "Hiragino Sans CNS", "Microsoft JhengHei", $fallback-font-family
+$cjk-jp-font-family = $base-font-family, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "Yu Gothic", YuGothic, Meiryo, $fallback-font-family
+$cjk-ko-font-family = $base-font-family, "Malgun Gothic", $fallback-font-family
+$body-font-family = $base-font-family, $fallback-font-family
+
+
+// Unit sizes
+//**************************************
+//如需整体更宽松，可各乘以1个系数，如1.1,1.05
+//**************************************
+$unit-o = 0.05rem
+$unit-h = 0.1rem
+$unit-1 = 0.2rem
+$unit-2 = 0.4rem
+$unit-3 = 0.6rem
+$unit-4 = 0.8rem
+$unit-5 = 1rem
+$unit-6 = 1.2rem
+$unit-7 = 1.4rem
+$unit-8 = 1.6rem
+$unit-9 = 1.8rem
+$unit-10 = 2rem
+$unit-12 = 2.4rem
+$unit-16 = 3.2rem
+
+
+// Font sizes
+//**************************************
+// $html-font-size = 22 //更大
+$html-font-size = 20 //default
+// $html-font-size = 18 //更精致
+//**************************************
+$html-line-height = 1.5
+$font-size = 0.8rem
+$font-size-xs = 0.6rem
+$font-size-sm = 0.7rem
+$font-size-lg = 0.9rem
+$font-size-xl = 1.0rem
+$font-size-2l = 1.1rem
+$line-height = 1.2rem
+
+
+// Sizes
+$layout-spacing = $unit-2
+$layout-spacing-sm = $unit-1
+$layout-spacing-lg = $unit-4
+//**************************************
+$border-radius = $unit-h //default
+// $border-radius = $unit-5 //更圆润
+//**************************************
+$border-width = $unit-o
+$border-width-lg = $unit-h
+$control-size = $unit-9
+$control-size-sm = $unit-7
+$control-size-lg = $unit-10
+$control-padding-x = $unit-2
+$control-padding-x-sm = $unit-2 * 0.75
+$control-padding-x-lg = $unit-2 * 1.5
+$control-padding-y = ($control-size - $line-height) / 2 - $border-width
+$control-padding-y-sm = ($control-size-sm - $line-height) / 2 - $border-width
+$control-padding-y-lg = ($control-size-lg - $line-height) / 2 - $border-width
+$control-icon-size = 0.8rem
+
+
+// Z-index
+$zindex-0 = 1
+$zindex-1 = 100
+$zindex-2 = 200
+$zindex-3 = 300
+$zindex-4 = 400
+
+
+// 全局用到的mixins
+// focus shadow, use for base/button/form
+control-shadow($color = $primary-color)
+  box-shadow: 0 0 0 0.1rem rgba($color, 0.2)
